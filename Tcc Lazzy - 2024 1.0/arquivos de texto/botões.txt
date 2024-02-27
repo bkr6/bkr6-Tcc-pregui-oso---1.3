@@ -1,0 +1,4 @@
+    <button onclick="adicionarProduto('carrinho')" id="btnCarrinho">Adicionar Produto ao Carrinho</button>
+    <button onclick="adicionarProduto('desejos')" id="btnDesejos">Adicionar Produto a lista de desejos</button>
+    <button onclick="removerProduto('desejos')">Remover Produto</button>
+    <button onclick="removerProduto('carrinho')">Remover Produto</button>

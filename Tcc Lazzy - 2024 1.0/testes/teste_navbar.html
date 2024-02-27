@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lazzy - Home</title>
+    <link rel="shortcut icon" href="/img/logo-lazzy-icone.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Importando o arquivo de estilos CSS -->
+</head>
+<body>
+    <header class="container-cabecalho">
+        <div class="central-atendimento">
+            <table>
+                <tr>
+                    <td><img src="/img/icon central de atendimento.png" alt=""></td>
+                    <td><p>Central de <br><a href=""><strong>atendimento</strong></a></p></td>
+                </tr>
+            </table>
+        </div>
+        <div class="logo-lazzy">
+            <a href=""><img src="/img/logo lazzy.png" alt=""></a>
+        </div>
+        <div class="log-lista-carrinho">
+            <table>
+                <tr>
+                    <td class="img-log"><img src="/img/icon login.png" alt=""></td>
+                    <td>
+                        <p>Bem-vindo <br><a href=""><strong>ENTRAR</strong></a>-ou-<a href=""><strong>CADASTRAR</strong></a></p></td>
+                    <td class="img-log1 lista">
+                        <button class="lista-desejo" style="border: none; background-color: white;"><a href=""><img src="/img/icon lista de desejos.png" alt=""></a></button>
+                        <div id="desejos">0</div>
+                    </td>
+                    <td class="img-log1 carrinho">
+                        <a href=""><img src="/img/icon carrinho.png" alt=""></a>
+                        <div id="carrinho">0</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </header>
+    <hr class="divisao">
+    <button onclick="adicionarProduto('carrinho')" id="btnCarrinho">Adicionar Produto ao Carrinho</button>
+    <button onclick="adicionarProduto('desejos')" id="btnDesejos">Adicionar Produto a lista de desejos</button>
+    <button onclick="removerProduto('desejos')">Remover Produto</button>
+    <button onclick="removerProduto('carrinho')">Remover Produto</button>
+
+  
+
+    <script >
+
+     
+   function adicionarProduto(elementId) {
+    var contadorElemento = document.getElementById(elementId);
+    var contador = parseInt(contadorElemento.textContent);
+    contador++;
+    contadorElemento.textContent = contador;
+    localStorage.setItem(elementId, contador);
+}
+
+window.onload = function() {
+    var carrinho = localStorage.getItem("carrinho");
+    var desejos = localStorage.getItem("desejos");
+    if (carrinho !== null) {
+        document.getElementById("carrinho").textContent = carrinho;
+    }
+    if (desejos !== null) {
+        document.getElementById("desejos").textContent = desejos;
+    }
+};
+window.addEventListener('storage', function(event) {
+    if (event.key === 'carrinho') {
+        document.getElementById("carrinho").textContent = event.newValue;
+    } else if (event.key === 'desejos') {
+        document.getElementById("desejos").textContent = event.newValue;
+    }
+});
+    </script>
+</body>
+</html>
+

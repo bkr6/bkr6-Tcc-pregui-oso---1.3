@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offcanvas</title>
+<style>
+    
+.slideshow-container {
+    position: relative;
+    max-width:  80%;
+    margin: auto;
+    overflow: hidden;
+}
+.fade img{
+    width: 100%;
+}
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+.dot {
+    cursor: pointer;
+    height: 4px;
+    width: 40px;
+    margin: 0 2px 20px 2px;
+    background-color: #bbb;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+.active, .dot:hover {
+    background-color: #717171;
+}
+.fade {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease; /* Transição suave de opacidade */
+}
+
+.fade.active {
+    opacity: 1;
+}
+
+
+
+</style>
+</head>
+<body>
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Slideshow</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="slideshow-container">
+            <div class="slide fade">
+                <img src="/img/banner1.jpg" alt="Imagem 1">
+            </div>
+    
+            <div class="slide fade">
+                <img src="/img/banner2.jpg" alt="Imagem 2">
+            </div>
+    
+            <div class="slide fade">
+                <img src="/img/banner3.jpeg" alt="Imagem 3">
+            </div>
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </div>
+        <script src="script.js"></script>
+    </body>
+    </html>
+    
+
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    let i;
+    let slides = document.getElementsByClassName("slide");
+    let dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 2000); // Altere 2000 para o intervalo desejado (em milissegundos)
+}
+
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+
+</script>
+</body>
+</html>
